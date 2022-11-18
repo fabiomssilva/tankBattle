@@ -1,0 +1,7 @@
+Run the web server:
+python -m SimpleHTTPServer 8000
+
+Hub component is needed to relay all the messages
+
+teamAClient and teamBClient is where the logic need to be implemented. 
+

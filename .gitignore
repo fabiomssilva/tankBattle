@@ -1,0 +1,6 @@
+hub/node_modules
+teamClient/node_modules
+.DS_Store
+web/.DS_Store
+web/js/.DS_Store
+web/images/.DS_Store
