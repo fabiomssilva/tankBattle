@@ -11,3 +11,6 @@ Rules:
 - Team B fire first
 - You can use own websocket client
 - It is possible to cheat. ie) send commands on behalf of the other team. Cheaters will be disqualified.
+- Every tick will send the current board status. Team can reply after each tick. 
+- If more than one answered happen between ticks. The last answer will be taken in consideration
+
