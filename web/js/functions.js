@@ -1,6 +1,10 @@
 
-function updatePostion(teamInfo, teamSprites) {
+function updatePosition(teamInfo, teamSprites) {
     for (let i = 0; i < teamInfo.tanks.length; i++) {
+        if (teamInfo.tanks[i].status === destroyed) {
+            teamSprites[i].visible = false;
+            return
+        }
         t = teamInfo.tanks[i];
         teamSprites[i].x = teamInfo.tanks[i].x * blockWidth + blockWidth;
         teamSprites[i].y = teamInfo.tanks[i].y * blockHeight + blockHeight;
@@ -60,4 +64,49 @@ function drawFloor() {
             app.stage.addChild(tmpSprite);
         }
     }
+}
+
+
+function clearPreviousFire() {
+    // Clear previous fire Sprites
+    for (fSprite of fireSprites) {
+        app.stage.removeChild(fSprite);
+        fSprite.destroy();
+    }
+    fireSprites = [];
+}
+
+function findFireAffectedBlocks(x, y, fireDirection) {
+
+    const returnValue = [];
+
+    if (fireDirection === "fireUp") {
+        for (let i = 0; i < y; i++) {
+            returnValue.push({ x, y: i });
+        }
+        return returnValue;
+    }
+
+
+    if (fireDirection === "fireDown") {
+        for (let i = y + 1; i < 10; i++) {
+            returnValue.push({ x, y: i });
+        }
+        return returnValue;
+    }
+
+    if (fireDirection === "fireLeft") {
+        for (let i = 0; i < x; i++) {
+            returnValue.push({ x: i, y });
+        }
+        return returnValue;
+    }
+
+    if (fireDirection === "fireRight") {
+        for (let i = x + 1; i < 10; i++) {
+            returnValue.push({ x: i, y });
+        }
+        return returnValue;
+    }
+
 }
